@@ -1,0 +1,35 @@
+== Introduction ==
+Python bindings for syncml, generated using pybindgen.
+
+You need:
+ * Pybindgen, which needs
+   * Gccxml
+   * Pygccxml
+   * Waf
+ * libsyncml, svn version
+   * cmake
+
+== Installing ==
+deps.sh (in the top directory) will get most of these. Remaining instructions
+install items to /opt/cvs/
+
+Gccxml:
+sudo dpkg -i gccxml_0.9.0+cvs20080525-1_i386.deb
+
+pygccxml:
+    python setup.py install --prefix=/opt/cvs
+
+pybindgen:
+    PYTHONPATH=/opt/cvs/lib/python2.5/site-packages/ ../waf-0.3.2 --prefix=/opt/cvs
+    PYTHONPATH=/opt/cvs/lib/python2.5/site-packages/ ../waf-0.3.2 install
+
+libsyncml (svn version):
+    cd libsyncml-build
+    ./build.sh
+
+You can then build the bindings using 
+./autogen.sh && ./configure && make
+
+
+
+
